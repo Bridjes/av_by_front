@@ -1,0 +1,71 @@
+.car_view {
+    padding: 20px;
+}
+.car_view .loader_box {
+    height: 100vh;
+}
+.car_view .info {
+
+}
+.car_view .info .car_title {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    font-family: Arial;
+    font-size: 30px;
+    font-weight: bolder;
+    height: 60px;
+
+}
+.car_view .info .car_chars {
+    display: grid;
+    grid-template: 400px / 700px 1fr;
+}
+.car_view .info .car_chars  .photos {
+
+}
+.car_view .info .car_chars  .characteristics {
+    padding: 0 10px;
+    display: grid;
+    grid-template-rows: 20% 60% 20%;
+}
+.car_view .info .car_chars  .characteristics .price {
+    font-family: Arial;
+    font-size: 22px;
+    font-weight: bolder;
+    color: #35605A;
+    display: flex;
+
+}
+.car_view .info .car_chars  .characteristics .tth {
+    font-family: Arial;
+    font-size: 18px;
+}
+.car_view .info .car_chars  .characteristics .tth .prgf {
+    margin-bottom: 10px;
+}
+.car_view .info .car_chars  .characteristics .contact {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+    flex-direction: column;
+}
+.car_view .info .car_chars  .characteristics .contact .contact_city {
+    padding-bottom: 10px;
+    font-family: Arial;
+    font-size: 14px;
+    color: gray;
+}
+.car_view .info .advanced_info {
+    padding-top: 20px;
+}
+.car_view .info .advanced_info .advanced_info_title {
+    font-family: Arial;
+    font-size: 20px;
+    font-weight: bolder;
+    color: #35605A;
+}
+.car_view .info .advanced_info .description {
+    font-family: Arial;
+    font-size: 18px;
+}

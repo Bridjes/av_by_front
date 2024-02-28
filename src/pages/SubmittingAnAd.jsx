@@ -1,0 +1,76 @@
+import React, {useState} from 'react';
+import {categories} from "../utils/categories";
+import CarCreate from "../components/Form/CarCreate";
+import classes from "./css/SubmittingAnAd.component.css";
+
+const SubmittingAnAd = () => {
+    const [selectedCategory, setSelectedCategory] = useState('');
+    const [selectedSubcategory, setSelectedSubcategory] = useState('');
+
+    const handleCategoryChange = (e) => {
+        setSelectedCategory(e.target.value);
+        setSelectedSubcategory('');
+    };
+
+    const handleSubcategoryChange = (e) => {
+        setSelectedSubcategory(e.target.value);
+    };
+
+    const renderSubcategories = () => {
+        if (selectedCategory) {
+            return categories[selectedCategory].map((subcategory) => (
+                <option key={subcategory} value={subcategory}>
+                    {subcategory}
+                </option>
+            ));
+        }
+        return null;
+    };
+
+    const renderForm = () => {
+        switch (selectedSubcategory) {
+            case "Легковой автомобиль":
+                return <CarCreate/>
+            default:
+                return null
+        }
+    };
+
+    return (
+        <div className="submittinf_an_ad">
+            <div className="categs-creating">
+                <label className="label-creating" htmlFor="category">Выберите категорию:</label>
+                <select id="category"
+                        value={selectedCategory}
+                        onChange={handleCategoryChange}
+                        className="dropdown-creating"
+                >
+                    <option value="">-- Выберите категорию --</option>
+                    {Object.keys(categories).map((category) => (
+                        <option key={category} value={category}>
+                            {category}
+                        </option>
+                    ))}
+                </select>
+
+                {selectedCategory && (
+                    <div className="subcateg-creating">
+                        <label className="label-creating" htmlFor="subcategory">Выберите подкатегорию:</label>
+                        <select id="subcategory"
+                                value={selectedSubcategory}
+                                onChange={handleSubcategoryChange}
+                                className="dropdown-creating"
+                        >
+                            <option value="">-- Выберите подкатегорию --</option>
+                            {renderSubcategories()}
+                        </select>
+                    </div>
+                )}
+            </div>
+
+            {renderForm()}
+        </div>
+    );
+};
+
+export default SubmittingAnAd;

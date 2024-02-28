@@ -1,0 +1,137 @@
+nav {
+    height: 70px;
+    background: #35605A;
+    display: grid;
+    grid-template: 70px / 200px 1fr 250px;
+}
+nav .logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+nav .logo .logo-link {
+    color: #F7F0F0;
+    text-decoration: none;
+    font-size: 22px;
+    font-family: Arial;
+}
+nav .nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+}
+nav .nav .nav-items {
+    margin-left: 30px;
+}
+nav .nav .nav-items .nav-links {
+    display: flex;
+    flex-direction: row;
+    width: 100vh;
+}
+nav .nav .nav-items .nav-links .nav-link {
+    margin: 0 10px;
+    display: flex;
+    align-items: center;
+}
+nav .nav .nav-items .nav-links .nav-link .nav-link-url {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: #F7F0F0;
+    font-family: Arial;
+    font-size: 14px;
+    font-weight: bold;
+}
+nav .nav .nav-items .nav-links .nav-link .nav-link-url:hover {
+    color: #00120B;
+}
+nav .nav .nav-items-button {
+    margin-right: 20px;
+    color: #18F2B2;
+    background: #35605A;
+    border: 1px solid #18F2B2;
+    padding: 10px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 18px;
+    font-family: Arial;
+}
+nav .nav .nav-items-button:hover {
+    box-shadow: 0 0 5px #18F2B2;
+    border: 1px solid #18F2B2;
+    background: #18F2B2;
+    color: #35605A;
+    text-shadow: 0 0 10px #35605A;
+}
+nav .logo .logo-link:hover {
+    color: #18F2B2;
+    text-shadow: 0 0 10px #F7F0F0;
+}
+nav .auth {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial;
+}
+nav .auth .auth_content .auth_container {
+    display: flex;
+    align-items: center;
+}
+nav .auth .auth_content .auth_container .user_info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+nav .auth .auth_content .auth_container .user_info:hover {
+    opacity: 50%;
+}
+nav .auth .auth_content .auth_container .user_info img {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 20px;
+    border: none;
+}
+nav .auth .auth_content .auth_container .user_info .username {
+    font-family: Arial;
+    color: #18F2B2;
+}
+nav .auth .auth_content .auth_container button {
+    background: #35605A;
+    border: none;
+    color: #F7F0F0;
+    font-family: Arial;
+    font-size: 20px;
+}
+nav .auth .auth_content .auth_container .auth_logout_button {
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 70px;
+    height: 50px;
+    background: none;
+    border: none;
+    color: #dde4ea;
+}
+nav .auth .auth_content .auth_container .auth_logout_button:hover {
+    color: gray;
+}
+nav .auth .auth_login_button {
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 70px;
+    height: 50px;
+    background: none;
+    border: none;
+    color: #dde4ea;
+}
+nav .auth .auth_login_button:hover {
+    color: #18F2B2;
+}

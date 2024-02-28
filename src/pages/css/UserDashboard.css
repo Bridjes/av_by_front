@@ -1,0 +1,120 @@
+.loader_box {
+    height: 75vh;
+    width: 100%;
+}
+.user_dashboard {
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    grid-gap: 20px;
+}
+.user_dashboard .user_control {
+    display: grid;
+    grid-template-rows: 800px 300px;
+}
+.user_dashboard .user_control {
+    display: grid;
+    grid-template-rows: auto auto;
+}
+.user_dashboard .user_control .user_card {
+    border-radius: 3px;
+    box-shadow: 0 2px 2px gray;
+    background: #f9f9f9;
+    padding: 10px;
+}
+.user_dashboard .user_control .user_card img {
+    width: 190px;
+    height: 190px;
+    object-fit: cover;
+    border-radius: 3px;
+    border: none;
+}
+.user_dashboard .user_control .user_card .user_description {
+    padding-top: 10px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.user_dashboard .user_control .user_card .user_description .username {
+    font-family: Arial;
+    font-size: 20px;
+    font-weight: bolder;
+    color: #35605A;
+}
+.user_dashboard .user_control .user_card .user_description .contact {
+    padding-top: 5px;
+    display: grid;
+    grid-template-columns: 30px 160px;
+}
+.user_dashboard .user_control .user_card .user_description .contact .icon_email {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: chocolate;
+    font-size: 20px;
+}
+.user_dashboard .user_control .user_card .user_description .contact .email_value {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+.user_dashboard .user_control .user_card .user_description .contact .email_value a {
+    text-decoration: none;
+    color: #00120B;
+    font-family: Arial;
+    font-size: 14px;
+}
+.user_dashboard .user_control .user_card .user_description .contact .email_value a:hover {
+    color: #35605A;
+    text-shadow: 0 0 5px #18F2B2;
+}
+.user_dashboard .user_control .user_card .user_description .contact .icon_phone {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: forestgreen;
+    font-size: 18px;
+}
+.user_dashboard .user_control .user_card .user_description .contact .no_phone {
+    font-family: Arial;
+    color: brown;
+}
+.user_dashboard .user_control .user_card .user_description .telegram {
+    padding-top: 10px;
+    display: flex;
+}
+.user_dashboard .user_control .user_card .user_description .telegram .tg_tag {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial;
+    padding-right: 5px;
+
+}
+.user_dashboard .user_control .user_card .user_description .telegram .icon_ok {
+    color: seagreen;
+    font-family: Arial;
+}
+.user_dashboard .user_control .user_card .user_description .telegram .icon_no {
+    color: brown;
+    font-family: Arial;
+}
+.user_dashboard .user_control .user_card .user_description .add_telegram {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+    width: 100%;
+}
+.user_dashboard .user_control .user_card .user_description .add_telegram a {
+    border: none;
+    background: none;
+    font-family: Arial;
+    font-size: 12px;
+    font-weight: bolder;
+    color: #35605A;
+    text-decoration: none;
+}
+.user_dashboard .user_control .user_card .user_description .add_telegram a:hover {
+    color: #18F2B2;
+}

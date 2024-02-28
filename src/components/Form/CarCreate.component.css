@@ -1,0 +1,127 @@
+.loader-box {
+    height: calc(100vh - 70px);
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.form {
+    font-family: Arial;
+    margin: 20px;
+    background: #dde4ea;
+}
+.form-characteristics {
+    margin-top: 20px;
+    display: grid;
+    grid-gap: 10px;
+    grid-template: 20px / 200px 1fr;
+}
+.form .form-subtitles {
+    padding-left: 150px;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: Arial;
+    color: #35605A;
+    grid-column: 1 / span 2;
+    grid-row: 1 / span 1;
+}
+.form .form-equipment {
+    margin-top: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-gap: 10px;
+}
+.form .form-equipment .form-equipment-conteiner {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    height: 400px;
+}
+.form .form-subtitles-categs {
+    margin:4px;
+    width: 25%;
+    display: grid;
+    grid-template: 20px / 20px 200px;
+}
+.form .form-subtitles-categs .checkbox {
+    border-radius: 3px;
+    color: #35605A;
+    display: flex;
+    align-items: flex-start;
+}
+.form .form-subtitles-categs label {
+    text-align: start;
+    overflow-wrap: break-word;
+}
+.form .form-region-city {
+    padding-top: 10px;
+}
+.form .form-subtitles-categs .categs-title {
+    grid-column: 1 / span 2;
+    grid-row: 1 / span 1;
+    font-weight: bold;
+    color: #00120B;
+}
+.form label {
+    text-align: end;
+    overflow-wrap: break-word;
+    color: #00120B;
+    padding-bottom: 10px;
+}
+.form select {
+    border: 1px solid #35605A;
+    color: #35605A;
+    border-radius: 5px;
+}
+.form select {
+    width: 200px;
+}
+.form input {
+    width: 300px;
+}
+.form textarea {
+    width: 300px;
+    height: 200px;
+}
+.form input[type=checkbox]:checked + label:after {
+    color: #35605A;
+}
+.form .add_photo {
+    background: none;
+    border: none;
+    color: #00120B;
+    font-weight: bolder;
+    padding: 5px 0;
+}
+.form .add_photo:hover {
+    color: #35605A;
+}
+.form .del_photo {
+    background: none;
+    border: none;
+    color: red;
+    font-weight: bolder;
+}
+.form .del_photo:hover {
+    color: rosybrown;
+}
+.form .photo_item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.form .photo_input {
+
+}
+.form input[type="file"]::file-selector-button {
+    background: #35605A;
+    font-family: Arial;
+    font-weight: bolder;
+    color: #F7F0F0;
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+}
+.form input[type="file"]::file-selector-button:hover {
+    background: #18F2B2;
+    color: #00120B;
+}

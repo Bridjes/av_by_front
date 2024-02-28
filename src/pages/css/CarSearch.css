@@ -1,0 +1,7 @@
+.car_search_block {
+    background: #dde4ea;
+    padding: 10px 20px 10px 20px;
+}
+.car_search_block .loader_box {
+    height: 100vh;
+}

@@ -1,0 +1,26 @@
+.dropdown_with_subcats {
+    display: grid;
+    grid-template: 40px / 2fr 2fr 1fr 1fr;
+    grid-gap: 5px;
+}
+.dropdown_item {
+    display: flex;
+    flex-direction: row;
+}
+.dropdown_item .dropdown_item_label {
+    font-family: Arial;
+    font-size: 18px;
+    width: 60px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 5px;
+}
+.dropdown_item select {
+    width: 90px;
+    height: 100%;
+    border: none;
+    background: #35605A;
+    color: #F7F0F0;
+    outline: none;
+}

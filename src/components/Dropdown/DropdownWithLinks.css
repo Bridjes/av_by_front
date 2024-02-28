@@ -1,0 +1,60 @@
+/* Общие стили для списка и кнопки */
+.dropdown {
+    position: relative;
+    background: transparent;
+}
+
+.dropdown button {
+    font-size: 14px;
+    font-weight: bold;
+    background: transparent;
+    color: #F7F0F0;
+    border: none;
+    cursor: pointer;
+    height: 70px;
+}
+
+.dropdown button span {
+    font-size: 10px;
+    margin-left: 5px;
+}
+
+/* Стили для выпадающего списка */
+.dropdown-content {
+    left: -20px;
+    width: max-content;
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    border: 1px solid #35605A;
+    border-top: none;
+    box-shadow: 0px 8px 16px 0px #35605A;
+    z-index: 1;
+}
+
+.dropdown-item {
+    font-size: 14px;
+    font-family: Arial;
+    font-weight: bold;
+    padding: 10px;
+}
+.link {
+    color: #35605A;
+    text-decoration: none;
+}
+.dropdown-item:hover {
+    background: #35605A;
+}
+.link:hover{
+    color: #F7F0F0;
+}
+
+/* Стили для наведения курсора на кнопку и выпадающий список */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover button {
+    color: #00120B;
+}

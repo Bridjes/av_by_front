@@ -1,0 +1,10 @@
+body {
+    padding: 0;
+    margin: 0;
+    overflow: auto;
+    min-width: 100vw;
+    background: #dde4ea;
+}
+.container .loader_box {
+    height: 100vh;
+}

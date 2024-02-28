@@ -1,0 +1,143 @@
+.cars_filter_roof {
+    display: grid;
+    grid-template: 50px / 1fr 1fr;
+}
+.cars_filter_roof .cars_params_title {
+    font-family: Arial;
+    font-size: 20px;
+    font-weight: bolder;
+    color: #35605A;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+}
+.cars_filter_roof .add_brand_box {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+.cars_filter_roof .add_brand_box .filter_add_brand {
+    border: none;
+    border-radius: 10px;
+    height: 20px;
+    background: #f9f9f9;
+    font-family: Arial;
+    font-weight: bolder;
+    color: gray;
+}
+.cars_filter_roof .add_brand_box .filter_add_brand:hover {
+    color: #00120B;
+}
+.cars_filter_panel {
+    background: #f9f9f9;
+    box-shadow: 0 2px 2px gray;
+    border-radius: 3px;
+    display: grid;
+    grid-template: 40px / 1fr 1fr;
+}
+.cars_filter_panel .cars_flter_1 {
+    padding: 0 10px 0 10px;
+    grid-column: 1 / span 2;
+    display: grid;
+    grid-template-columns: 1fr 40px;
+}
+.cars_filter_panel .cars_flter_1 .cars_flter_del {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.cars_filter_panel .cars_flter_1 .cars_flter_del .cars_flter_del_button {
+    background: none;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rosybrown;
+    font-size: 25px;
+}
+.cars_filter_panel .cars_flter_1 .cars_flter_del .cars_flter_del_button:hover {
+    color: brown;
+}
+.cars_filter_panel .all_params {
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+.cars_filter_panel .all_params button {
+    border: none;
+    background: none;
+    color: #35605A;
+    font-family: Arial;
+    font-weight: bolder;
+}
+.cars_filter_panel .all_params button:hover {
+    color: #00120B;
+}
+.cars_ads {
+    margin: 20px 0;
+    background: #f9f9f9;
+    box-shadow: 0 2px 2px gray;
+    border-radius: 3px;
+}
+.cars_count {
+    padding: 15px 20px;
+    font-family: Arial;
+    font-size: 20px;
+    font-weight: bolder;
+    color: #35605A;
+    background: #F7F0F0;
+    border-bottom: 1px solid #dde4ea;
+    border-radius: 3px;
+}
+.cars_pages {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    font-family: Arial;
+    font-size: 20px;
+    font-weight: bolder;
+    color: #35605A;
+}
+.cars_pages button {
+    width: 40px;
+    font-family: Arial;
+    font-size: 20px;
+    color: #dde4ea;
+    background: #35605A;
+    border: none;
+}
+.cars_pages button:hover {
+    color: #00120B;
+    background: #18F2B2;
+}
+.cars_pages button .button_name {
+    display: flex;
+    justify-content: center;
+}
+.cars_pages .button_space {
+    width: 30px;
+    display: inline-block;
+}
+.cars_pages .button_space .dotes {
+    display: flex;
+    justify-content: center;
+}
+.cars_pages .cars_pages_first button {
+    border-radius: 3px;
+}
+.cars_pages .cars_pages_before button:first-child {
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+.cars_pages .cars_pages_current {
+    width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.cars_pages .cars_pages_after button:last-child {
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
