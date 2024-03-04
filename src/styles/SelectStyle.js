@@ -6,7 +6,7 @@ export const SelectStyles = {
         border: "none",
         boxShadow: "none",
         borderRadius: "none",
-        width: "200px",
+        width: "180px",
         height: "40px",
     }),
     input: (defaultStyles, state) => ({

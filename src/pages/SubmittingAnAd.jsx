@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {categories} from "../utils/categories";
 import CarCreate from "../components/Form/CarCreate";
 import classes from "./css/SubmittingAnAd.component.css";
+import DropdownStylishTwo from "../components/Dropdown/DropdownStylishTwo";
 
 const SubmittingAnAd = () => {
     const [selectedCategory, setSelectedCategory] = useState('');
@@ -39,33 +40,10 @@ const SubmittingAnAd = () => {
     return (
         <div className="submittinf_an_ad">
             <div className="categs-creating">
-                <label className="label-creating" htmlFor="category">Выберите категорию:</label>
-                <select id="category"
-                        value={selectedCategory}
-                        onChange={handleCategoryChange}
-                        className="dropdown-creating"
-                >
-                    <option value="">-- Выберите категорию --</option>
-                    {Object.keys(categories).map((category) => (
-                        <option key={category} value={category}>
-                            {category}
-                        </option>
-                    ))}
-                </select>
-
-                {selectedCategory && (
-                    <div className="subcateg-creating">
-                        <label className="label-creating" htmlFor="subcategory">Выберите подкатегорию:</label>
-                        <select id="subcategory"
-                                value={selectedSubcategory}
-                                onChange={handleSubcategoryChange}
-                                className="dropdown-creating"
-                        >
-                            <option value="">-- Выберите подкатегорию --</option>
-                            {renderSubcategories()}
-                        </select>
-                    </div>
-                )}
+                <DropdownStylishTwo categories={categories}
+                                    setSubValue={setSelectedSubcategory}
+                                    title="Категория"
+                                    subtitle="Подкатегория"/>
             </div>
 
             {renderForm()}

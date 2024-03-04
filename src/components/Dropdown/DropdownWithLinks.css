@@ -20,7 +20,7 @@
 }
 
 /* Стили для выпадающего списка */
-.dropdown-content {
+.dropdown .dropdown-content {
     left: -20px;
     width: max-content;
     display: none;
@@ -33,7 +33,7 @@
     z-index: 1;
 }
 
-.dropdown-item {
+.dropdown .dropdown-item {
     font-size: 14px;
     font-family: Arial;
     font-weight: bold;

@@ -6,6 +6,10 @@ export default class CarServices {
         return await $api.get('v1/cars/retrieve/')
     }
 
+    static async load_own_cars() {
+        return await $api.get('v1/cars/retrieve_own/')
+    }
+
     static async load_cars_pk(pk) {
         return await axios.get(`${API_URL}/v1/cars/retrieve/${pk}`)
     }

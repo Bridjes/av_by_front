@@ -23,6 +23,9 @@ import {locations} from "../../utils/locations";
 import classes from "./CarCreate.component.css"
 import MyButton from "../UI/Button/MyButton";
 import CategoriesSubcategoriesDropdowns from "../Dropdown/CategoriesSubcategoriesDropdowns";
+import DropdownStylishForm from "../Dropdown/DropdownStylishForm";
+import DropdownStylishThreeForm from "../Dropdown/DropdownStylishThreeForm";
+import DropdownStylishTwoForm from "../Dropdown/DropdownStylishTwoForm";
 
 const CarCreate = () => {
     const dispatcher = useDispatch()
@@ -123,18 +126,16 @@ const CarCreate = () => {
                 : <form onSubmit={handleSubmit(onSubmit)}
                         className="form"
                 >
-                    <div>
-                        <CategoriesSubSubcategoriesDropdowns categories={car_brand_model_year}
-                                                             register={register}
-                                                             setValue={setValue}
-                                                             name="brand"
-                                                             subname="model"
-                                                             subsubname="year"
-                                                             title="Марка"
-                                                             subtitle="Модель"
-                                                             subsubtitle="Год выпуска"
-                        />
-                    </div>
+                    <DropdownStylishThreeForm categories={car_brand_model_year}
+                                              register={register}
+                                              setValue={setValue}
+                                              name="brand"
+                                              subname="model"
+                                              subsubname="year"
+                                              title="Марка"
+                                              subtitle="Модель"
+                                              subsubtitle="Год выпуска"
+                    />
 
                     {!showGroup1 && (
                         <MyButton onClick={() => {
@@ -152,45 +153,64 @@ const CarCreate = () => {
                         <div className="form-characteristics">
                             <div className="form-subtitles">Параметры</div>
 
-                            <label htmlFor="body_type">Тип кузова*</label>
-                            <CategoriesDropdown categories={car_body_type}
-                                                setValue={setValue}
-                                                register={register}
-                                                name="body_type"
-                            />
+                            <div className="dropdown_one">
+                                <DropdownStylishForm categories={car_body_type}
+                                                     setValue={setValue}
+                                                     register={register}
+                                                     name="body_type"
+                                                     title="Тип кузова"
+                                />
+                            </div>
 
-                            <label htmlFor="transmission">Коробка передач</label>
-                            <CategoriesDropdown categories={car_transmission}
-                                                setValue={setValue}
-                                                register={register}
-                                                name="transmission"
-                            />
+                            <div className="dropdown_one">
+                                <DropdownStylishForm categories={car_transmission}
+                                                     setValue={setValue}
+                                                     register={register}
+                                                     name="transmission"
+                                                     title="Коробка передач"
+                                />
+                            </div>
 
-                            <label htmlFor="engine_type">Тип двигателя</label>
-                            <CategoriesDropdown categories={car_engine_type}
-                                                setValue={setValue}
-                                                register={register}
-                                                name="engine_type"
-                            />
+                            <div className="dropdown_one">
+                                <DropdownStylishForm categories={car_engine_type}
+                                                     setValue={setValue}
+                                                     register={register}
+                                                     name="engine_type"
+                                                     title="Тип двигателя"
+                                />
+                            </div>
 
-                            <label htmlFor="drive_unit">Привод</label>
-                            <CategoriesDropdown categories={car_drive_unit}
-                                                setValue={setValue}
-                                                register={register}
-                                                name="drive_unit"
-                            />
+                            <div className="dropdown_one">
+                                <DropdownStylishForm categories={car_engine_type}
+                                                     setValue={setValue}
+                                                     register={register}
+                                                     name="engine_type"
+                                                     title="Тип двигателя"
+                                />
+                            </div>
 
-                            <label htmlFor="engine_volume">Объем, л</label>
-                            <CategoriesDropdown categories={car_engine_volume}
-                                                setValue={setValue}
-                                                register={register}
-                                                name="engine_volume"
-                            />
+                            <div className="dropdown_one">
+                                <DropdownStylishForm categories={car_drive_unit}
+                                                     setValue={setValue}
+                                                     register={register}
+                                                     name="drive_unit"
+                                                     title="Привод"
+                                />
+                            </div>
+
+                            <div className="dropdown_one">
+                                <DropdownStylishForm categories={car_engine_volume}
+                                                     setValue={setValue}
+                                                     register={register}
+                                                     name="engine_volume"
+                                                     title="Объем, л"
+                                />
+                            </div>
 
                             {!showGroup2 && (
                                 <MyButton onClick={() => {
                                     setShowGroup2(true);
-                                    setTimeout(function() {
+                                    setTimeout(function () {
                                         ScrollToBottom()
                                     }, 200);
                                 }}
@@ -206,7 +226,7 @@ const CarCreate = () => {
                             <div className="form-subtitles">VIN-номер</div>
 
                             <label htmlFor="vin">Код из 17 символов</label>
-                            <input {...register("vin")} id="vin" type="text" />
+                            <input {...register("vin")} id="vin" type="text"/>
 
                             {!showGroup3 && (
                                 <MyButton onClick={() => {
@@ -226,43 +246,51 @@ const CarCreate = () => {
                         <div className="form-characteristics">
                             <div className="form-subtitles">Состояние и цвет</div>
 
-                            <label htmlFor="state">Состояние*</label>
-                            <CategoriesDropdown categories={car_state}
-                                                setValue={setValue}
-                                                register={register}
-                                                name="state"
-                            />
+                            <div className="dropdown_one">
+                                <DropdownStylishForm categories={car_state}
+                                                     setValue={setValue}
+                                                     register={register}
+                                                     name="state"
+                                                     title="Состояние"
+                                />
+                            </div>
 
                             <label htmlFor="mileage">Пробег*</label>
-                            <input {...register("mileage")} id="mileage" type="number" />
+                            <input {...register("mileage")} id="mileage" type="number"/>
 
-                            <label htmlFor="color">Цвет</label>
-                            <CategoriesDropdown categories={car_color}
-                                                setValue={setValue}
-                                                register={register}
-                                                name="color"
-                            />
+                            <div className="dropdown_one">
+                                <DropdownStylishForm categories={car_color}
+                                                     setValue={setValue}
+                                                     register={register}
+                                                     name="color"
+                                                     title="Цвет"
+                                />
+                            </div>
 
-                            <label htmlFor="interior_material">Материал интерьера</label>
-                            <CategoriesDropdown categories={car_interior_material}
-                                                setValue={setValue}
-                                                register={register}
-                                                name="interior_material"
-                            />
+                            <div className="dropdown_one">
+                                <DropdownStylishForm categories={car_interior_material}
+                                                     setValue={setValue}
+                                                     register={register}
+                                                     name="interior_material"
+                                                     title="Материал интерьера"
+                                />
+                            </div>
 
-                            <label htmlFor="interior_color">Цвет интерьера</label>
-                            <CategoriesDropdown categories={car_interior_color}
-                                                setValue={setValue}
-                                                register={register}
-                                                name="interior_color"
-                            />
+                            <div className="dropdown_one">
+                                <DropdownStylishForm categories={car_interior_color}
+                                                     setValue={setValue}
+                                                     register={register}
+                                                     name="interior_color"
+                                                     title="Цвет интерьера"
+                                />
+                            </div>
 
                             {!showGroup4 && (
                                 <MyButton onClick={() => {
                                     setShowGroup4(true);
-                                    setTimeout(function() {
-                                    ScrollToBottom()
-                                }, 200);
+                                    setTimeout(function () {
+                                        ScrollToBottom()
+                                    }, 200);
                                 }}
                                 >
                                     Далее
@@ -775,26 +803,30 @@ const CarCreate = () => {
                         <div className="form-characteristics">
                             <div className="form-subtitles">Информация о регистрации</div>
 
-                            <label htmlFor="registration_country">Страна регистрации</label>
-                            <CategoriesDropdown categories={car_registration_country}
-                                                setValue={setValue}
-                                                register={register}
-                                                name="registration_country"
-                            />
+                            <div className="dropdown_one">
+                                <DropdownStylishForm categories={car_registration_country}
+                                                     setValue={setValue}
+                                                     register={register}
+                                                     name="registration_country"
+                                                     title="Страна регистрации"
+                                />
+                            </div>
 
-                            <label htmlFor="accounting">Учёт</label>
-                            <CategoriesDropdown categories={car_accounting}
-                                                setValue={setValue}
-                                                register={register}
-                                                name="accounting"
-                            />
+                            <div className="dropdown_one">
+                                <DropdownStylishForm categories={car_accounting}
+                                                     setValue={setValue}
+                                                     register={register}
+                                                     name="accounting"
+                                                     title="Учёт"
+                                />
+                            </div>
 
                             {!showGroup6 && (
                                 <MyButton onClick={() => {
                                     setShowGroup6(true);
-                                    setTimeout(function() {
-                                    ScrollToBottom()
-                                }, 200);
+                                    setTimeout(function () {
+                                        ScrollToBottom()
+                                    }, 200);
                                 }}
                                 >
                                     Далее
@@ -1015,16 +1047,14 @@ const CarCreate = () => {
                         <div>
                             <div className="form-subtitles">Местонахождение и контакты продавца</div>
 
-                            <div className="form-region-city">
-                                <CategoriesSubcategoriesDropdowns categories={locations}
-                                                                  register={register}
-                                                                  setValue={setValue}
-                                                                  name="region"
-                                                                  subname="city"
-                                                                  title="Область"
-                                                                  subtitle="Город"
-                                />
-                            </div>
+                            <DropdownStylishTwoForm categories={locations}
+                                                    register={register}
+                                                    setValue={setValue}
+                                                    name="region"
+                                                    subname="city"
+                                                    title="Область"
+                                                    subtitle="Город"
+                            />
 
                             <div className="form-characteristics">
                                 <label htmlFor="name">Имя продавца</label>

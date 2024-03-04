@@ -1,0 +1,20 @@
+.dropdown_one_form_item {
+    display: flex;
+    flex-direction: row;
+}
+.dropdown_one_form_item .dropdown_item_label {
+    font-family: Arial;
+    font-size: 18px;
+    width: 200px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+.dropdown_one_form_item select {
+    width: 90px;
+    height: 100%;
+    border: none;
+    background: #35605A;
+    color: #F7F0F0;
+    outline: none;
+}

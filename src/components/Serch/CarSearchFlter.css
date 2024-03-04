@@ -39,7 +39,7 @@
     padding: 0 10px 0 10px;
     grid-column: 1 / span 2;
     display: grid;
-    grid-template-columns: 1fr 40px;
+    grid-template-columns: auto 30px;
 }
 .cars_filter_panel .cars_flter_1 .cars_flter_del {
     display: flex;

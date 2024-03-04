@@ -1,6 +1,7 @@
 import axios from "axios";
 
 export const API_URL = 'http://127.0.0.1:8000'
+// export const API_URL = 'http://192.168.20.206:8000'
 
 // инстанс запросов
 const $api = axios.create({

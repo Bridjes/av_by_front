@@ -4,6 +4,8 @@ import {retrieve_fetch} from "../store/curentUserInfoReduser";
 import classes from "./css/UserDashboard.css"
 import MyLoader from "../components/UI/Loader/MyLoader";
 import {Link} from "react-router-dom";
+import CarSearchFilter from "../components/Serch/CarSearchFilter";
+import {load_car_own_fetch} from "../store/carReduser";
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -14,10 +16,12 @@ const UserDashboard = () => {
     const dispatcher = useDispatch()
     const [isLoading, setIsLoading] = useState(false)
     const user_info = useSelector(state => state.user_info.user_info)
+    const own_cars = useSelector(state => state.cars.own_cars)
     const isAuth = useSelector(state => state.user.isAuth)
 
     useEffect(() => {
         dispatcher(retrieve_fetch({setIsLoading: setIsLoading}))
+        dispatcher(load_car_own_fetch({setIsLoading: setIsLoading}))
     }, [dispatcher,]);
     return (
         <div>
@@ -85,7 +89,7 @@ const UserDashboard = () => {
                         </div>
                     </div>
                     <div className="user_adds">
-
+                        <CarSearchFilter carData={own_cars}/>
                     </div>
                 </div>
             }

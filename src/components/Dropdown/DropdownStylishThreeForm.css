@@ -1,0 +1,23 @@
+.dropdown_stylish_three {
+    height: auto;
+}
+.dropdown_stylish_three .dropdown_item {
+    display: flex;
+    flex-direction: row;
+}
+.dropdown_stylish_three .dropdown_item .dropdown_item_label {
+    font-family: Arial;
+    font-size: 18px;
+    width: 200px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+.dropdown_stylish_three .dropdown_item select {
+    width: 90px;
+    height: auto;
+    border: none;
+    background: #35605A;
+    color: #F7F0F0;
+    outline: none;
+}
