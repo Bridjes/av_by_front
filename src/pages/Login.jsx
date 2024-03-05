@@ -18,9 +18,10 @@ const Login = ({ from }) => {
 
     // редиректнет на главную страницу
     useEffect(()=> {
-        // const url = localStorage.getItem("link")
+        // считываем ссылку по которой хотели перейти до авторизации
+        const url = localStorage.getItem("link")
         if(isAuth) {
-            navigate('/')
+            navigate(url)
         }
     }, [isAuth,])
 

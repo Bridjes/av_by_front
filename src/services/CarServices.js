@@ -3,7 +3,7 @@ import axios from "axios";
 
 export default class CarServices {
     static async load_cars() {
-        return await $api.get('v1/cars/retrieve/')
+        return await axios.get(`${API_URL}/v1/cars/retrieve/`)
     }
 
     static async load_own_cars() {

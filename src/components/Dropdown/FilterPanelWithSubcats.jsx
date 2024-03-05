@@ -14,7 +14,7 @@ const FilterPanelWithSubcats = ({ ...props }) => {
 
     const brandOptions = Object.keys(props.categories).sort().map((category) => ({
             value: category,
-            label: category,
+            label: category
         }))
     brandOptions.unshift({
         value: "",
@@ -23,7 +23,7 @@ const FilterPanelWithSubcats = ({ ...props }) => {
 
     const modelOptions = Object.keys(models).sort().map((subcategory) => ({
             value: subcategory,
-            label: subcategory,
+            label: subcategory
         }))
     modelOptions.unshift({
         value: "",
@@ -33,7 +33,7 @@ const FilterPanelWithSubcats = ({ ...props }) => {
     const yearOptions = years.sort((a, b) =>
         b.localeCompare(a)).map((subcategory) => ({
             value: subcategory,
-            label: subcategory,
+            label: subcategory
         }));
     yearOptions.unshift({
         value: "",

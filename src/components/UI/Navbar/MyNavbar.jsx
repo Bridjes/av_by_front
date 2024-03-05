@@ -1,9 +1,8 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Link, useNavigate} from "react-router-dom";
 import classes from './MyNavbar.component.css'
 import {useDispatch, useSelector} from "react-redux";
-import MyButton from "../Button/MyButton";
-import {logout_fetch} from "../../../store/curentUserReduser";
+import {check_auth_fetch, logout_fetch} from "../../../store/curentUserReduser";
 import MyLoader from "../Loader/MyLoader";
 import DropdownWithLinks from "../../Dropdown/DropdownWithLinks";
 
@@ -15,11 +14,26 @@ library.add(faSignIn)
 library.add(faSignOut)
 
 const MyNavbar = () => {
-    const dispatch = useDispatch()
+    const dispatcher = useDispatch()
     const user = useSelector(state => state.user.user)
     const isAuth = useSelector(state => state.user.isAuth)
     const [isLoading, setIsLoading] = useState(false)
     const navigate = useNavigate()
+
+    // регулярна проверка авторизации
+    useEffect(() => {
+        dispatcher(check_auth_fetch({setIsLoading: setIsLoading}))
+
+        const interval = setInterval(() => {
+            dispatcher(check_auth_fetch({setIsLoading: setIsLoading}))
+        }, 40 * 60 * 1000);  // интервал повторения в миллисекундах (раз в 40 минут)
+
+        return () => {
+            // для очистки интервала, чтобы функция не вызывалась
+            // после того, как компонент будет удален из DOM
+            clearInterval(interval);
+        };
+    }, []);
 
     return (
         <nav>
@@ -87,10 +101,11 @@ const MyNavbar = () => {
                             <div className="auth_container">
                                 <div className="user_info"
                                      onClick={() => {
-                                        // перехо на новую страницу
-                                        const url = 'user_dashboard'
-                                        const newWindow = window.open(url, '_blank');
-                                        if (newWindow) newWindow.opener = null;
+                                         navigate("/user_dashboard")
+                                         // перехо на новую страницу
+                                         // const url = 'user_dashboard'
+                                         // const newWindow = window.open(url, '_blank');
+                                         // if (newWindow) newWindow.opener = null;
                                     }}
                                 >
                                     <img src={user.photo}/>
@@ -98,7 +113,7 @@ const MyNavbar = () => {
                                 </div>
                                 <div>
                                     <button className="auth_logout_button"
-                                            onClick={()=>dispatch(logout_fetch({setIsLoading: setIsLoading}))}
+                                            onClick={()=>dispatcher(logout_fetch({setIsLoading: setIsLoading}))}
                                     >
                                         <FontAwesomeIcon icon={faSignOut} />
                                     </button>
