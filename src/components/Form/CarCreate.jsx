@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import {useDispatch} from "react-redux";
 import MyLoader from "../UI/Loader/MyLoader";
 import {create_car_fetch} from "../../store/carReduser";
-import CategoriesSubSubcategoriesDropdowns from "../Dropdown/CategoriesSubSubcategoriesDropdowns";
 import {
     car_accounting,
     car_body_type,
@@ -18,11 +17,9 @@ import {
     car_transmission
 } from "../../utils/cars";
 import { useForm } from "react-hook-form";
-import CategoriesDropdown from "../Dropdown/CategoriesDropdown";
 import {locations} from "../../utils/locations";
 import classes from "./CarCreate.component.css"
 import MyButton from "../UI/Button/MyButton";
-import CategoriesSubcategoriesDropdowns from "../Dropdown/CategoriesSubcategoriesDropdowns";
 import DropdownStylishForm from "../Dropdown/DropdownStylishForm";
 import DropdownStylishThreeForm from "../Dropdown/DropdownStylishThreeForm";
 import DropdownStylishTwoForm from "../Dropdown/DropdownStylishTwoForm";
@@ -181,15 +178,6 @@ const CarCreate = () => {
                             </div>
 
                             <div className="dropdown_one">
-                                <DropdownStylishForm categories={car_engine_type}
-                                                     setValue={setValue}
-                                                     register={register}
-                                                     name="engine_type"
-                                                     title="Тип двигателя"
-                                />
-                            </div>
-
-                            <div className="dropdown_one">
                                 <DropdownStylishForm categories={car_drive_unit}
                                                      setValue={setValue}
                                                      register={register}
@@ -225,8 +213,17 @@ const CarCreate = () => {
                         <div className="form-characteristics">
                             <div className="form-subtitles">VIN-номер</div>
 
-                            <label htmlFor="vin">Код из 17 символов</label>
-                            <input {...register("vin")} id="vin" type="text"/>
+                            <label className="char_label"
+                                   htmlFor="vin"
+                            >
+                                Код из 17 символов
+                            </label>
+                            <input {...register("vin")}
+                                   id="vin"
+                                   type="text"
+                                   className="char_text"
+                                   placeholder="WAUZZZ44ZEN096063"
+                            />
 
                             {!showGroup3 && (
                                 <MyButton onClick={() => {
@@ -255,8 +252,17 @@ const CarCreate = () => {
                                 />
                             </div>
 
-                            <label htmlFor="mileage">Пробег*</label>
-                            <input {...register("mileage")} id="mileage" type="number"/>
+                            <label className="char_label"
+                                   htmlFor="mileage"
+                            >
+                                Пробег
+                            </label>
+                            <input {...register("mileage")}
+                                   id="mileage"
+                                   type="number"
+                                   className="char_text"
+                                   placeholder="..."
+                            />
 
                             <div className="dropdown_one">
                                 <DropdownStylishForm categories={car_color}
@@ -839,7 +845,7 @@ const CarCreate = () => {
                         <div className="form-characteristics">
                             <div className="form-subtitles">Фотографии</div>
 
-                            <label htmlFor="photo_1">Фото</label>
+                            <label htmlFor="photo_1" className="photo_label">Фото</label>
                             <div className="photo_item">
                                 <input {...register("photo_1")}
                                        id="photo_1"
@@ -862,7 +868,7 @@ const CarCreate = () => {
                             </div>
 
                             {showPhoto1 && (
-                                <label htmlFor="photo_2">Фото 2</label>
+                                <label htmlFor="photo_2" className="photo_label">Фото 2</label>
                             )}
                             {showPhoto1 && (
                                 <div className="photo_item">
@@ -894,7 +900,7 @@ const CarCreate = () => {
                             )}
 
                             {showPhoto2 && (
-                                <label htmlFor="photo_3">Фото 3</label>
+                                <label htmlFor="photo_3" className="photo_label">Фото 3</label>
                             )}
                             {showPhoto2 && (
                                 <div className="photo_item">
@@ -926,7 +932,7 @@ const CarCreate = () => {
                             )}
 
                             {showPhoto3 && (
-                                <label htmlFor="photo_4">Фото 4</label>
+                                <label htmlFor="photo_4" className="photo_label">Фото 4</label>
                             )}
                             {showPhoto3 && (
                                 <div className="photo_item">
@@ -961,7 +967,7 @@ const CarCreate = () => {
                             )}
 
                             {showPhoto4 && (
-                                <label htmlFor="photo_5">Фото 5</label>
+                                <label htmlFor="photo_5" className="photo_label">Фото 5</label>
                             )}
                             {showPhoto4 && (
                                 <div className="photo_item">
@@ -1002,8 +1008,17 @@ const CarCreate = () => {
                         <div className="form-characteristics">
                             <div className="form-subtitles">Видео из YouTube</div>
 
-                            <label htmlFor="youtube">Ссылка на видео</label>
-                            <input {...register("youtube")} id="youtube" type="url" />
+                            <label htmlFor="youtube"
+                                   className="char_label"
+                            >
+                                Ссылка на видео
+                            </label>
+                            <input {...register("youtube")}
+                                   id="youtube"
+                                   type="url"
+                                   className="char_text"
+                                   placeholder="https://www.youtube.com/....."
+                            />
 
                             {!showGroup8 && (
                                 <MyButton onClick={() => {
@@ -1023,11 +1038,28 @@ const CarCreate = () => {
                         <div className="form-characteristics">
                             <div className="form-subtitles">Описание и цена</div>
 
-                            <label htmlFor="description">Описание</label>
-                            <textarea {...register("description")} id="description" />
+                            <label htmlFor="description"
+                                   className="char_label"
+                            >
+                                Описание
+                            </label>
+                            <textarea {...register("description")}
+                                      id="description"
+                                      className="char_text_area"
+                                      placeholder="Подробное описание вашего авто..."
+                            />
 
-                            <label htmlFor="price">Цена</label>
-                            <input {...register("price")} id="price" type="text" />
+                            <label htmlFor="price"
+                                   className="char_label"
+                            >
+                                Цена
+                            </label>
+                            <input {...register("price")}
+                                   id="price"
+                                   type="text"
+                                   className="char_text"
+                                   placeholder="..."
+                            />
 
                             {!showGroup9 && (
                                 <MyButton onClick={() => {
@@ -1044,106 +1076,132 @@ const CarCreate = () => {
                     )}
 
                     {showGroup9 && (
-                        <div>
+                        <div className="form-characteristics">
                             <div className="form-subtitles">Местонахождение и контакты продавца</div>
 
-                            <DropdownStylishTwoForm categories={locations}
-                                                    register={register}
-                                                    setValue={setValue}
-                                                    name="region"
-                                                    subname="city"
-                                                    title="Область"
-                                                    subtitle="Город"
-                            />
+                            <div className="dropdown_one">
+                                <DropdownStylishTwoForm categories={locations}
+                                                        register={register}
+                                                        setValue={setValue}
+                                                        name="region"
+                                                        subname="city"
+                                                        title="Область"
+                                                        subtitle="Город"
+                                />
+                            </div>
 
-                            <div className="form-characteristics">
-                                <label htmlFor="name">Имя продавца</label>
-                                <input {...register("name")} id="name" type="text" />
 
-                                <label htmlFor="phone_1">Номер телефона</label>
-                                <div className="photo_item">
-                                    <input {...register("phone_1")}
-                                           id="phone_1"
+                            <label htmlFor="name"
+                                   className="char_label"
+                            >
+                                Имя продавца
+                            </label>
+                            <div className="name_item">
+                                <input {...register("name")}
+                                       id="name"
+                                       type="text"
+                                       className="char_text"
+                                />
+                            </div>
+
+                            <label htmlFor="phone_1"
+                                   className="char_label"
+                            >
+                                Номер телефона
+                            </label>
+                            <div className="phone_item">
+                                <input {...register("phone_1")}
+                                       id="phone_1"
+                                       type="tel"
+                                       maxLength="9"
+                                       className="char_text"
+                                       placeholder="293334455"/>
+                                <div>
+                                    {!showPhone1 && (
+                                        <button type="button"
+                                                className="add_photo"
+                                                onClick={() => {
+                                                    setShowPhone1(true);
+                                                    setTimeout(function () {
+                                                        ScrollToBottom()
+                                                    }, 200);
+                                                }}
+                                        >+ добавить ещё</button>
+                                    )}
+                                </div>
+                            </div>
+
+                            {showPhone1 && (
+                                <label htmlFor="phone_2"
+                                       className="char_label"
+                                >
+                                    Номер телефона 2
+                                </label>
+                            )}
+
+                            {showPhone1 && (
+                                <div className="phone_item">
+                                    <input {...register("phone_2")}
+                                           id="phone_2"
                                            type="tel"
                                            maxLength="9"
-                                           placeholder="293334455"/>
+                                           className="char_text"
+                                           placeholder="293334455"
+                                    />
                                     <div>
-                                        {!showPhone1 && (
+                                        {!showPhone2 && (
                                             <button type="button"
                                                     className="add_photo"
                                                     onClick={() => {
-                                                        setShowPhone1(true);
+                                                        setShowPhone2(true);
                                                         setTimeout(function () {
                                                             ScrollToBottom()
                                                         }, 200);
                                                     }}
                                             >+ добавить ещё</button>
                                         )}
+                                        {showPhone1 && !showPhone2 && (
+                                            <button type="button"
+                                                    className="del_photo"
+                                                    onClick={() => {
+                                                        setShowPhone1(false);
+                                                        setValue("phone_2", ""); // Сброс значения поля "Номер телефона 2"
+                                                    }}
+                                            >убрать</button>
+                                        )}
                                     </div>
                                 </div>
+                            )}
 
-                                {showPhone1 && (
-                                    <label htmlFor="phone_2">Номер телефона 2</label>
-                                )}
-
-                                {showPhone1 && (
-                                    <div className="photo_item">
-                                        <input {...register("phone_2")}
-                                               id="phone_2"
-                                               type="tel"
-                                               maxLength="9"
-                                               placeholder="293334455"
-                                        />
-                                        <div>
-                                            {!showPhone2 && (
-                                                <button type="button"
-                                                        className="add_photo"
-                                                        onClick={() => {
-                                                            setShowPhone2(true);
-                                                            setTimeout(function () {
-                                                                ScrollToBottom()
-                                                            }, 200);
-                                                        }}
-                                                >+ добавить ещё</button>
-                                            )}
-                                            {showPhone1 && !showPhone2 && (
-                                                <button type="button"
-                                                        className="del_photo"
-                                                        onClick={() => {
-                                                            setShowPhone1(false);
-                                                            setValue("phone_2", ""); // Сброс значения поля "Номер телефона 2"
-                                                        }}
-                                                >убрать</button>
-                                            )}
-                                        </div>
+                            {showPhone2 && (
+                                <label htmlFor="phone_3"
+                                       className="char_label"
+                                >
+                                    Номер телефона 3
+                                </label>
+                            )}
+                            {showPhone2 && (
+                                <div className="phone_item">
+                                    <input {...register("phone_3")}
+                                           id="phone_3"
+                                           type="tel"
+                                           maxLength="9"
+                                           className="char_text"
+                                           placeholder="293334455"
+                                    />
+                                    <div>
+                                        {showPhone2 && (
+                                            <button type="button"
+                                                    className="del_photo"
+                                                    onClick={() => {
+                                                        setShowPhone2(false);
+                                                        setValue("phone_3", ""); // Сброс значения поля "Номер телефона 3"
+                                                    }}
+                                            >убрать</button>
+                                        )}
                                     </div>
-                                )}
-
-                                {showPhone2 && (
-                                    <label htmlFor="phone_3">Номер телефона 3</label>
-                                )}
-                                {showPhone2 && (
-                                    <div className="photo_item">
-                                        <input {...register("phone_3")}
-                                               id="phone_3"
-                                               type="tel"
-                                               maxLength="9"
-                                               placeholder="293334455"
-                                        />
-                                        <div>
-                                            {showPhone2 && (
-                                                <button type="button"
-                                                        className="del_photo"
-                                                        onClick={() => {
-                                                            setShowPhone2(false);
-                                                            setValue("phone_3", ""); // Сброс значения поля "Номер телефона 3"
-                                                        }}
-                                                >убрать</button>
-                                            )}
-                                        </div>
-                                    </div>
-                                )}
-                            </div>
+                                </div>
+                            )}
 
                             <MyButton type="submit">Подтвердить</MyButton>
 

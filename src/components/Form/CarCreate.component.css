@@ -19,6 +19,36 @@
 .form-characteristics .dropdown_one {
     grid-column: 1 / span 2;
 }
+.form-characteristics .char_label {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 30px;
+    padding: 0;
+    font-family: Arial;
+    font-size: 18px;
+}
+.form-characteristics .char_text {
+    border: none;
+    outline: none;
+    border-left: 1px solid darkgray;
+    background: none;
+    padding-left: 10px;
+    font-family: Arial;
+    font-size: 16px;
+    color: #35605A;
+}
+.form-characteristics .char_text_area {
+    border: none;
+    outline: none;
+    border-left: 1px solid darkgray;
+    border-bottom: 1px solid darkgray;
+    background: none;
+    padding-left: 10px;
+    font-family: Arial;
+    font-size: 16px;
+    color: #35605A;
+}
 .form .form-subtitles {
     padding-left: 150px;
     font-size: 20px;
@@ -107,13 +137,27 @@
 .form .del_photo:hover {
     color: rosybrown;
 }
+.form .photo_label {
+    font-family: Arial;
+    font-size: 18px;
+    width: 200px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
 .form .photo_item {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
 }
-.form .photo_input {
-
+.form .name_item {
+    padding-top: 5px;
+}
+.form .phone_item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-top: 5px;
 }
 .form input[type="file"]::file-selector-button {
     background: #35605A;
