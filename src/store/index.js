@@ -4,6 +4,7 @@ import createSagaMiddleware from 'redux-saga'
 import {rootWatcher} from "../saga";
 import {carReduser} from "./carReduser";
 import {curentUserInfoReduser} from "./curentUserInfoReduser";
+import {chatReduser} from "./chatReduser";
 
 const sagaMiddleware = createSagaMiddleware()
 
@@ -11,6 +12,7 @@ const sagaMiddleware = createSagaMiddleware()
 const rootReduser = combineReducers({
     user: curentUserReduser,
     user_info: curentUserInfoReduser,
+    user_chat: chatReduser,
     cars: carReduser,
 })
 

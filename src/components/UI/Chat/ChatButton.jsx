@@ -1,6 +1,7 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import classes from "./ChatButton.css"
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import {get_chats_fetch} from "../../../store/chatReduser";
 
 // AwesomeIcons
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -10,9 +11,20 @@ library.add(faCommenting)
 library.add(faRemove)
 
 const ChatButton = () => {
+    const dispatcher = useDispatch()
     const isAuth = useSelector(state => state.user.isAuth)
+    const chats = useSelector(state => state.user_chat.chats)
     const [isOpne, setIsOpen] = useState(false)
+    const [isLoading, setIsLoading] = useState(false)
     const badgeCount = 3
+
+    useEffect(() => {
+        if (isAuth) {
+            dispatcher(get_chats_fetch({setIsLoading: setIsLoading}))
+        }
+    }, [isAuth,])
+
+    console.log(chats)
 
     return (
         <div>

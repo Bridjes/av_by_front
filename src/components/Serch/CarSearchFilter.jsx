@@ -371,7 +371,7 @@ const CarSearchFilter = ({carData}) => {
             <div className="cars_cards">
                 <Suspense fallback={<MyLoader/>}>
                     {currentCars.map((car) => (
-                        <CardLazyComponent item={car}/>
+                        <CardLazyComponent item={car} key={car.id}/>
                     ))}
                 </Suspense>
             </div>

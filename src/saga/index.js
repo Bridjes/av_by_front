@@ -8,6 +8,7 @@ import {carRetrievePKWatch} from "./cars/carRetrievePKSaga";
 import {carCreateWatch} from "./cars/carCreateSaga";
 import {userRetrieveWatch} from "./user_info/userRetrieveSaga";
 import {carRetrieveOwnWatch} from "./cars/carRetrieveOwnSaga";
+import {chatRetrieveWatch} from "./chat/chatRetrieveSaga";
 
 export function* rootWatcher() {
     yield all([
@@ -17,6 +18,8 @@ export function* rootWatcher() {
         userCheckAuthWatch(),
 
         userRetrieveWatch(),
+
+        chatRetrieveWatch(),
 
         carRetrieveWatch(),
         carRetrievePKWatch(),
