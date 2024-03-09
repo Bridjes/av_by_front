@@ -1,0 +1,57 @@
+.chat-button {
+    position: fixed;
+    bottom: 20px;
+    right: 30px;
+    background: none;
+    border: none;
+    color: #35605A;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 40px;
+    width: auto;
+    height: auto;
+}
+.chat-button:hover {
+    color: #18F2B2;
+}
+
+.badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: brown;
+    border-radius: 20px;
+    padding: 5px;
+    width: 13px;
+    height: 13px;
+    box-shadow: 0 0 5px #F7F0F0;
+}
+.badge .badge_count {
+    font-family: Arial;
+    font-size: 12px;
+    font-weight: bolder;
+    color: #F7F0F0;
+}
+.chat-panel {
+    background: #F7F0F0;
+    height: 400px;
+    width: 300px;
+    position: fixed;
+    bottom: 20px;
+    right: 30px;
+    box-shadow: 0 2px 2px gray;
+    border-radius: 3px;
+}
+.chat-panel .close-chat-panel {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: none;
+    border: none;
+    color: brown;
+    cursor: pointer;
+    font-size: 20px;
+}
+.chat-panel .close-chat-panel:hover {
+    color: red;
+}

@@ -11,6 +11,7 @@ import CarView from "./pages/CarView";
 import Register from "./pages/Register";
 import UserDashboard from "./pages/UserDashboard";
 import classes from "./pages/css/App.css";
+import ChatButton from "./components/UI/Chat/ChatButton";
 
 function App() {
     const isAuth = useSelector(state => state.user.isAuth)
@@ -47,6 +48,7 @@ function App() {
                     />
                     <Route path="*" element={<DefaultRoute/>}/>
                 </Routes>
+                <ChatButton/>
             </BrowserRouter>
         </div>
     );
