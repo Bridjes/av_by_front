@@ -15,7 +15,7 @@ export const chatReduser = (state=defaultState, action) => {
        case GET_CHATS:
            return {...state, chats: action.payload}
        case SEND_MESSAGE:
-           return {...state, chats: action.payload}
+           return {...state}
        default:
            return state
    }

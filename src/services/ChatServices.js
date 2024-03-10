@@ -6,7 +6,7 @@ export default class ChatServices {
     }
 
     static async send_message(text, user_id) {
-        return await $api.post('',
+        return await $api.post(`v1/chat_message/create/`,
             {text, user_id},
             {
                 withCredentials: true,
