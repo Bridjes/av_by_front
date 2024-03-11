@@ -19,43 +19,41 @@ const ChatButton = () => {
 
     const [isOpen, setIsOpen] = useState(false)
     const [isOnChat, setIsOnChat] = useState(false)
-    const [currentChat, setCurrentChat] = useState({})
+    const [chatId, setChatId] = useState(null)
     const [isLoadingChat, setIsLoadingChat] = useState(false)
 
     const [text, setText] = useState('')
 
     const badgeCount = 3
 
-    // useEffect(() => {
-    //     if (isAuth) {
-    //         dispatcher(get_chats_fetch({setIsLoading: setIsLoadingChat}))
-    //     }
-    // }, [isAuth,])
-
     // регулярна проверка сообщений чата
     useEffect(() => {
-        dispatcher(get_chats_fetch({setIsLoading: setIsLoadingChat}))
-
-        const interval = setInterval(() => {
+        if (isAuth) {
             dispatcher(get_chats_fetch({setIsLoading: setIsLoadingChat}))
-        }, 2 * 1000);  // интервал повторения в миллисекундах (раз в 2 секунды)
 
-        return () => {
-            // для очистки интервала, чтобы функция не вызывалась
-            // после того, как компонент будет удален из DOM
-            clearInterval(interval);
-        };
-    }, []);
+            const interval = setInterval(() => {
+                dispatcher(get_chats_fetch({setIsLoading: setIsLoadingChat}))
+            }, 2 * 1000);  // интервал повторения в миллисекундах (раз в 2 секунды)
+
+            return () => {
+                // для очистки интервала, чтобы функция не вызывалась
+                // после того, как компонент будет удален из DOM
+                clearInterval(interval);
+            };
+        }
+    }, [isAuth,]);
 
     const doClick = (id) => {
         setIsOnChat(true)
-        setCurrentChat(chats.find(chat => chat.id === id))
+        setChatId(id)
     }
+
+    const currentChat = chats.find(chat => chat.id === chatId)
 
     const doClose = () => {
         setIsOpen(false)
         setIsOnChat(false)
-        setCurrentChat({})
+        // setCurrentChat({})
         setText('')
     }
 
