@@ -7,10 +7,22 @@ function* chatSendMessageSaga(action) {
     try {
         const response = yield call(ChatServices.send_message, action.payload.text, action.payload.user_id)
         action.payload.setIsLoading(false)
-        yield put(send_message(response.data))
+
+        const message = {
+            "user_create": {
+                "username": action.payload.user_create.username,
+                "photo": action.payload.user_create.photo
+            },
+            "text": action.payload.text,
+        }
+        const message_obj = {
+            message: message,
+            chat_id: action.payload.chat_id
+        }
+        yield put(send_message(message_obj))
     } catch (e) {
         action.payload.setIsLoading(false)
-        yield put(send_message([]))
+        yield put(send_message(null))
     }
 }
 

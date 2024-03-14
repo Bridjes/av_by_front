@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import classes from "./ChatButton.css"
 import {useDispatch, useSelector} from "react-redux";
-import {get_chats_fetch, send_message_fetch} from "../../../store/chatReduser";
+import {get_chats_fetch, send_message_fetch, update_status_message_fetch} from "../../../store/chatReduser";
 
 // AwesomeIcons
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -33,7 +33,7 @@ const ChatButton = () => {
 
             const interval = setInterval(() => {
                 dispatcher(get_chats_fetch({setIsLoading: setIsLoadingChat}))
-            }, 2 * 1000);  // интервал повторения в миллисекундах (раз в 2 секунды)
+            }, 30 * 1000);  // интервал повторения в миллисекундах (раз в 30 сек)
 
             return () => {
                 // для очистки интервала, чтобы функция не вызывалась
@@ -60,8 +60,44 @@ const ChatButton = () => {
     const sendMessage = (e) => {
         e.preventDefault()
         const user_id = currentChat.users[0].id
-        dispatcher(send_message_fetch({text: text, user_id: user_id, setIsLoading: setIsLoadingChat}))
+        dispatcher(send_message_fetch({
+            text: text,
+            user_id: user_id,
+            chat_id: chatId,
+            user_create: current_user,
+            setIsLoading: setIsLoadingChat
+        }))
         setText('')
+
+
+        // пролистать чат вниз
+        const container = document.getElementById('chat-box');
+        setTimeout(() => {
+            container.scrollTop = container.scrollHeight;
+        }, 200); // 0.2 секунды
+    }
+
+    function formatDatetime(dateString) {
+        const date = new Date(dateString);
+        const today = new Date();
+        const isToday = date.getDate() === today.getDate() && date.getMonth() === today.getMonth() && date.getFullYear() === today.getFullYear();
+        let formattedDate;
+        if (isToday) {
+            formattedDate = `${date.getHours()}:${(date.getMinutes()<10?'0':'') + date.getMinutes()}`;
+        } else {
+            const day = (date.getDate()<10?'0':'') + date.getDate();
+            const month = ((date.getMonth()+1)<10?'0':'') + (date.getMonth()+1);
+            const hours = date.getHours();
+            const minutes = (date.getMinutes()<10?'0':'') + date.getMinutes();
+            formattedDate = `${day}.${month} ${hours}:${minutes}`;
+        }
+        return formattedDate;
+    }
+
+    const updateStatus = (current_status, pk) => {
+        if (!current_status) {
+            dispatcher(update_status_message_fetch({status:true, pk:pk, setIsLoading: setIsLoadingChat}))
+        }
     }
 
     return (
@@ -120,7 +156,9 @@ const ChatButton = () => {
                                 :
                                 // вывод выбранного чата
                                 <div>
-                                    <div className="chat-box">
+                                    <div className="chat-box"
+                                         id="chat-box"
+                                    >
                                         {
                                             currentChat.messages.map(message => (
                                                 message.user_create.username === current_user.username
@@ -128,13 +166,27 @@ const ChatButton = () => {
                                                     <div key={message.id}
                                                          className="message-blob-your"
                                                     >
-                                                        <div>{message.text}</div>
+                                                        {/*вызываем обновление статуса в случае, */}
+                                                        {/*если сообщение видно пользова*/}
+                                                        {/*{updateStatus(message.status, message.id)}*/}
+                                                        <div className="message-text">
+                                                            {message.text}
+                                                            <div className="sending-time">
+                                                                {formatDatetime(message.date_time)}
+                                                                <div>ok</div>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                     :
                                                     <div key={message.id}
                                                          className="message-blob-addr"
                                                     >
-                                                        <div>{message.text}</div>
+                                                        <div className="message-text">
+                                                            {message.text}
+                                                            <div className="sending-time">
+                                                                {formatDatetime(message.date_time)}
+                                                            </div>
+                                                        </div>
                                                     </div>
                                             ))
                                         }

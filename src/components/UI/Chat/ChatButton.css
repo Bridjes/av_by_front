@@ -111,13 +111,23 @@
     justify-content: flex-end;
     margin: 10px 0;
 }
-.chat-panel .chat-box .message-blob-your div {
+.chat-panel .chat-box .message-blob-your .message-text {
     padding: 10px;
     background: #dde4ea;
     border-radius: 5px;
     font-family: Arial;
     font-size: 16px;
 }
+.chat-panel .chat-box .message-blob-your .message-text .sending-time {
+    font-size: 12px;
+    color: #35605A;
+    display: flex;
+    justify-content: flex-end;
+}
+.chat-panel .chat-box .message-blob-your .message-text .sending-time div {
+    margin-left: 10px;
+}
+
 .chat-panel .chat-box .message-blob-addr {
     height: auto;
     display: flex;
@@ -125,13 +135,19 @@
     justify-content: flex-start;
     margin: 10px 0;
 }
-.chat-panel .chat-box .message-blob-addr div {
+.chat-panel .chat-box .message-blob-addr .message-text {
     padding: 10px;
     background: #35605A;
     border-radius: 5px;
     font-family: Arial;
     font-size: 16px;
     color: #dde4ea;
+}
+.chat-panel .chat-box .message-blob-addr .message-text .sending-time {
+    font-size: 12px;
+    color: lightblue;
+    display: flex;
+    justify-content: flex-start;
 }
 .chat-panel .chat-input {
     background: #35605A;
