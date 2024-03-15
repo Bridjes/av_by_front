@@ -7,10 +7,14 @@ function* chatUpdateStatusMessageSaga(action) {
     try {
         const response = yield call(ChatServices.update_message_status, action.payload.status, action.payload.pk)
         action.payload.setIsLoading(false)
-        yield put(update_status_message(response.data))
+        const message_obj = {
+            message: response.data,
+            chat_id: action.payload.chat_id
+        }
+        yield put(update_status_message(message_obj))
     } catch (e) {
         action.payload.setIsLoading(false)
-        yield put(update_status_message([]))
+        yield put(update_status_message({}))
     }
 }
 

@@ -22,12 +22,11 @@ export const chatReduser = (state=defaultState, action) => {
             chat.messages.push(action.payload.message)
             return {...state, chats: chats}
         case UPDATE_STATUS_MESSAGE:
-            const chats2 = state.chats.slice()   // копируем объект
-            for (let chat of chats2) {
-                const message = chat.messages.find(msg => msg.id === action.payload.message.id);
-                if (message) {
-                    message.status = true;
-                }
+            const chats2 = state.chats   // копируем объект
+            const chat2 = chats2.find(chat => chat.id === action.payload.chat_id)
+            const message2 = chat2.messages.find(msg => msg.id === action.payload.message.id)
+            if (message2) {
+                message2.status = true;
             }
            return {...state, chats: chats2}
        default:

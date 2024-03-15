@@ -33,7 +33,7 @@
     color: #F7F0F0;
 }
 .chat-panel {
-    height: 400px;
+    height: 500px;
     width: 300px;
     position: fixed;
     bottom: 20px;
@@ -47,7 +47,7 @@
     right: 5px;
     background: none;
     border: none;
-    color: brown;
+    color: rosybrown;
     cursor: pointer;
     font-size: 20px;
 }
@@ -55,7 +55,7 @@
     color: red;
 }
 .chat-panel .chats {
-    height: 380px;
+    height: 480px;
     background: lightblue;
     display: block;
     padding: 10px;
@@ -88,7 +88,7 @@
 .chat-panel .chats .chat-item .chat-item-body .last-message {
     font-family: Arial;
     font-size: 14px;
-    /*width: 80%; !* задаем ширину контейнера *!*/
+    width: 200px; /* задаем ширину контейнера */
     white-space: nowrap; /* запрещаем перенос текста на новую строку */
     overflow: hidden; /* скрываем текст, который не помещается в контейнер */
     text-overflow: ellipsis; /* добавляем троеточие в конце обрезанного текста */
@@ -98,8 +98,34 @@
     padding-right: 5px;
 }
 
+.chat-panel .chat-user {
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    height: 60px;
+    display: grid;
+    grid-template-columns: 60px auto;
+    background: #35605A;
+}
+.chat-panel .chat-user .chat-user-photo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.chat-panel .chat-user .chat-user-photo img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 25px;
+    border: none;
+}
+.chat-panel .chat-user .chat-user-name {
+    padding: 10px;
+    font-family: Arial;
+    font-size: 18px;
+    color: #dde4ea;
+}
 .chat-panel .chat-box {
-    height: 320px;
+    height: 360px;
     background: lightblue;
     padding: 30px 10px 0 10px;
     overflow: auto;
@@ -112,20 +138,27 @@
     margin: 10px 0;
 }
 .chat-panel .chat-box .message-blob-your .message-text {
-    padding: 10px;
+    padding: 10px 0 0 10px;
+    max-width: 80%;
     background: #dde4ea;
     border-radius: 5px;
     font-family: Arial;
     font-size: 16px;
 }
+.chat-panel .chat-box .message-blob-your .message-text .txt {
+    padding-right: 10px;
+}
 .chat-panel .chat-box .message-blob-your .message-text .sending-time {
+    padding: 0 3px 3px 0;
+    margin-top: 5px;
     font-size: 12px;
-    color: #35605A;
+    color: #00120B;
     display: flex;
     justify-content: flex-end;
 }
-.chat-panel .chat-box .message-blob-your .message-text .sending-time div {
-    margin-left: 10px;
+.chat-panel .chat-box .message-blob-your .message-text .sending-time .message-status {
+    margin-left: 5px;
+    color: #35605A;
 }
 
 .chat-panel .chat-box .message-blob-addr {
@@ -136,21 +169,27 @@
     margin: 10px 0;
 }
 .chat-panel .chat-box .message-blob-addr .message-text {
-    padding: 10px;
+    padding: 10px 10px 0 0;
+    max-width: 80%;
     background: #35605A;
     border-radius: 5px;
     font-family: Arial;
     font-size: 16px;
     color: #dde4ea;
 }
+.chat-panel .chat-box .message-blob-addr .message-text .txt {
+    padding-left: 10px;
+}
 .chat-panel .chat-box .message-blob-addr .message-text .sending-time {
+    padding: 0 0 3px 3px;
+    margin-top: 5px;
     font-size: 12px;
     color: lightblue;
     display: flex;
     justify-content: flex-start;
 }
 .chat-panel .chat-input {
-    background: #35605A;
+    background: #dde4ea;
     height: 50px;
     display: flex;
     align-items: center;
@@ -161,8 +200,8 @@
     border: none;
     background: none;
     outline: none;
-    color: #F7F0F0;
-    font-size: 20px;
+    color: #00120B;
+    font-size: 18px;
 }
 .chat-panel .chat-input .text-input::placeholder {
     color: darkgray;
@@ -173,7 +212,7 @@
     background: none;
     border: none;
     font-size: 18px;
-    color: #F7F0F0;
+    color: #35605A;
 }
 .chat-panel .chat-input .button-input:hover {
     color: darkgray;

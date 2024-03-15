@@ -6,10 +6,20 @@ import {get_chats_fetch, send_message_fetch, update_status_message_fetch} from "
 // AwesomeIcons
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {faCommenting, faRemove, faChevronCircleRight} from "@fortawesome/free-solid-svg-icons";
+import {
+    faCommenting,
+    faRemove,
+    faChevronCircleRight,
+    faCircle,
+    faCircleDot,
+    faCircleCheck
+    } from "@fortawesome/free-solid-svg-icons";
 library.add(faCommenting)
 library.add(faRemove)
 library.add(faChevronCircleRight)
+library.add(faCircle)
+library.add(faCircleDot)
+library.add(faCircleCheck)
 
 const ChatButton = () => {
     const dispatcher = useDispatch()
@@ -33,7 +43,7 @@ const ChatButton = () => {
 
             const interval = setInterval(() => {
                 dispatcher(get_chats_fetch({setIsLoading: setIsLoadingChat}))
-            }, 30 * 1000);  // интервал повторения в миллисекундах (раз в 30 сек)
+            }, 10 * 1000);  // интервал повторения в миллисекундах (раз в 10 сек)
 
             return () => {
                 // для очистки интервала, чтобы функция не вызывалась
@@ -41,14 +51,31 @@ const ChatButton = () => {
                 clearInterval(interval);
             };
         }
-    }, [isAuth,]);
+    }, [isAuth, ]);
+
+    const currentChat = chats.find(chat => chat.id === chatId)
+
+    // обновление статуса прочтения сообщений
+    useEffect(() => {
+        // обновление статусов просмотра
+        if (currentChat) {
+            currentChat.messages.map(msg => {
+                if ((!msg.status) && (msg.user_create.username !== current_user.username))
+                    if (!msg.status)
+                        dispatcher(update_status_message_fetch({
+                            status: true,
+                            pk: msg.id,
+                            setIsLoading: setIsLoadingChat,
+                            chat_id:chatId
+                        }))
+            })
+        }
+    }, [chatId, chats])
 
     const doClick = (id) => {
         setIsOnChat(true)
         setChatId(id)
     }
-
-    const currentChat = chats.find(chat => chat.id === chatId)
 
     const doClose = () => {
         setIsOpen(false)
@@ -92,12 +119,6 @@ const ChatButton = () => {
             formattedDate = `${day}.${month} ${hours}:${minutes}`;
         }
         return formattedDate;
-    }
-
-    const updateStatus = (current_status, pk) => {
-        if (!current_status) {
-            dispatcher(update_status_message_fetch({status:true, pk:pk, setIsLoading: setIsLoadingChat}))
-        }
     }
 
     return (
@@ -156,24 +177,48 @@ const ChatButton = () => {
                                 :
                                 // вывод выбранного чата
                                 <div>
+                                    <div className="chat-user">
+                                        <div className="chat-user-photo">
+                                            <img src={currentChat.users[0].photo}/>
+                                        </div>
+                                        <div className="chat-user-name">
+                                            {currentChat.users[0].username}
+                                        </div>
+                                    </div>
                                     <div className="chat-box"
                                          id="chat-box"
                                     >
-                                        {
+                                    {
                                             currentChat.messages.map(message => (
                                                 message.user_create.username === current_user.username
                                                     ?
                                                     <div key={message.id}
                                                          className="message-blob-your"
                                                     >
-                                                        {/*вызываем обновление статуса в случае, */}
-                                                        {/*если сообщение видно пользова*/}
-                                                        {/*{updateStatus(message.status, message.id)}*/}
                                                         <div className="message-text">
-                                                            {message.text}
+                                                            <div className="txt">
+                                                                {message.text}
+                                                            </div>
                                                             <div className="sending-time">
-                                                                {formatDatetime(message.date_time)}
-                                                                <div>ok</div>
+                                                                {"status" in message ?
+                                                                    message.status ?
+                                                                        // прочитано
+                                                                        <div>{formatDatetime(message.date_time)}
+                                                                            <span className="message-status">
+                                                                                <FontAwesomeIcon icon={faCircleCheck}/>
+                                                                            </span>
+                                                                        </div>
+                                                                        :
+                                                                        // отправлено успешно
+                                                                        <div>{formatDatetime(message.date_time)}
+                                                                            <span className="message-status">
+                                                                                <FontAwesomeIcon icon={faCircle}/>
+                                                                            </span>
+                                                                        </div>
+                                                                    :
+                                                                    // отправляется
+                                                                    <div className="message-status"><FontAwesomeIcon icon={faCircleDot}/></div>
+                                                                }
                                                             </div>
                                                         </div>
                                                     </div>
@@ -181,8 +226,13 @@ const ChatButton = () => {
                                                     <div key={message.id}
                                                          className="message-blob-addr"
                                                     >
+                                                        {/*вызываем обновление статуса в случае, */}
+                                                        {/*если сообщение видно пользователю/}
+                                                        {/*{updateStatus(message.status, message.id)}*/}
                                                         <div className="message-text">
-                                                            {message.text}
+                                                            <div className="txt">
+                                                                {message.text}
+                                                            </div>
                                                             <div className="sending-time">
                                                                 {formatDatetime(message.date_time)}
                                                             </div>
