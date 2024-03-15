@@ -31,10 +31,7 @@ const ChatButton = () => {
     const [isOnChat, setIsOnChat] = useState(false)
     const [chatId, setChatId] = useState(null)
     const [isLoadingChat, setIsLoadingChat] = useState(false)
-
     const [text, setText] = useState('')
-
-    const badgeCount = 3
 
     // регулярна проверка сообщений чата
     useEffect(() => {
@@ -43,7 +40,7 @@ const ChatButton = () => {
 
             const interval = setInterval(() => {
                 dispatcher(get_chats_fetch({setIsLoading: setIsLoadingChat}))
-            }, 10 * 1000);  // интервал повторения в миллисекундах (раз в 10 сек)
+            }, 3 * 1000);  // интервал повторения в миллисекундах (раз в 3 сек)
 
             return () => {
                 // для очистки интервала, чтобы функция не вызывалась
@@ -53,12 +50,26 @@ const ChatButton = () => {
         }
     }, [isAuth, ]);
 
+    function countMessages() {
+        let count = 0;
+        chats.forEach(chat => {
+            chat.messages.forEach(message => {
+                if (!message.status && message.user_create.username !== current_user.username) {
+                    count++;
+                }
+            });
+        });
+        return count;
+    }
+
+    const badgeCount = countMessages()
+
     const currentChat = chats.find(chat => chat.id === chatId)
 
     // обновление статуса прочтения сообщений
     useEffect(() => {
         // обновление статусов просмотра
-        if (currentChat) {
+        if (currentChat && isOnChat) {
             currentChat.messages.map(msg => {
                 if ((!msg.status) && (msg.user_create.username !== current_user.username))
                     if (!msg.status)
