@@ -23,7 +23,7 @@ const CarView = () => {
     const current_user = useSelector(state => state.user.user)
 
     const [fetchQuestions, isLoadingChat, loadingError] = useFatching(async () => {
-        const txt = `здравствуйте! Заинтересовало ваше авто ${car.brand} ${car.model} ${car.year} г.`
+        const txt = `Здравствуйте! Заинтересовало ваше авто ${car.brand} ${car.model} ${car.year} г.`
         // создаём сообщение в бекенде и открываем чат
         dispatcher(send_car_message_fetch({
             text: txt,
