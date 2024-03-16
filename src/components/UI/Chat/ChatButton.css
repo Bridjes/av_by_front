@@ -141,12 +141,16 @@
     padding: 10px 0 0 10px;
     max-width: 80%;
     background: #dde4ea;
+    box-shadow: 0 2px 2px gray;
     border-radius: 5px;
     font-family: Arial;
     font-size: 16px;
 }
 .chat-panel .chat-box .message-blob-your .message-text .txt {
     padding-right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
 }
 .chat-panel .chat-box .message-blob-your .message-text .sending-time {
     padding: 0 3px 3px 0;
@@ -172,6 +176,7 @@
     padding: 10px 10px 0 0;
     max-width: 80%;
     background: #35605A;
+    box-shadow: 0 2px 2px gray;
     border-radius: 5px;
     font-family: Arial;
     font-size: 16px;

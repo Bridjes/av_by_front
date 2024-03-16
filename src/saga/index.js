@@ -11,6 +11,7 @@ import {carRetrieveOwnWatch} from "./cars/carRetrieveOwnSaga";
 import {chatRetrieveWatch} from "./chat/chatRetrieveSaga";
 import {chatSendMessageWatch} from "./chat/chatSendMessageSaga";
 import {chatUpdateStatusMessageWatch} from "./chat/chatUpdateStatusSaga";
+import {chatSendCarMessageWatch} from "./chat/chatSendCarMessageSaga";
 
 export function* rootWatcher() {
     yield all([
@@ -24,6 +25,7 @@ export function* rootWatcher() {
         chatRetrieveWatch(),
         chatSendMessageWatch(),
         chatUpdateStatusMessageWatch(),
+        chatSendCarMessageWatch(),
 
         carRetrieveWatch(),
         carRetrievePKWatch(),

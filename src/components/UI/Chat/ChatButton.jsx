@@ -1,7 +1,12 @@
 import React, {useEffect, useState} from 'react';
 import classes from "./ChatButton.css"
 import {useDispatch, useSelector} from "react-redux";
-import {get_chats_fetch, send_message_fetch, update_status_message_fetch} from "../../../store/chatReduser";
+import {
+    get_chats_fetch, open_chats,
+    open_the_chat,
+    send_message_fetch,
+    update_status_message_fetch
+} from "../../../store/chatReduser";
 
 // AwesomeIcons
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -27,9 +32,13 @@ const ChatButton = () => {
     const isAuth = useSelector(state => state.user.isAuth)
     const chats = useSelector(state => state.user_chat.chats)
 
-    const [isOpen, setIsOpen] = useState(false)
-    const [isOnChat, setIsOnChat] = useState(false)
-    const [chatId, setChatId] = useState(null)
+    const isOpen = useSelector(state => state.user_chat.isOpen)
+    const isOnChat = useSelector(state => state.user_chat.isOnChat)
+    const chatId = useSelector(state => state.user_chat.chatId)
+    // const [isOpen, setIsOpen] = useState(false)
+    // const [isOnChat, setIsOnChat] = useState(false)
+    // const [chatId, setChatId] = useState(null)
+
     const [isLoadingChat, setIsLoadingChat] = useState(false)
     const [text, setText] = useState('')
 
@@ -84,14 +93,22 @@ const ChatButton = () => {
     }, [chatId, chats])
 
     const doClick = (id) => {
-        setIsOnChat(true)
-        setChatId(id)
+        dispatcher(open_the_chat({
+            isOnChat: true,
+            chat_id: id
+        }))
+        // setIsOnChat(true)
+        // setChatId(id)
     }
 
     const doClose = () => {
-        setIsOpen(false)
-        setIsOnChat(false)
-        // setCurrentChat({})
+        dispatcher(open_chats(false))
+        dispatcher(open_the_chat({
+            isOnChat: false,
+            chat_id: null
+        }))
+        // setIsOpen(false)
+        // setIsOnChat(false)
         setText('')
     }
 
@@ -138,7 +155,7 @@ const ChatButton = () => {
                 <div>
                     {!isOpen ?
                         <button className="chat-button"
-                                onClick={()=>setIsOpen(true)}
+                                onClick={()=> dispatcher(open_chats(true))}
                         >
                             <FontAwesomeIcon icon={faCommenting}/>
                             {badgeCount > 0 &&

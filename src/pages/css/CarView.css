@@ -56,6 +56,19 @@
     font-size: 14px;
     color: gray;
 }
+.car_view .info .car_chars  .characteristics .contact .btn-message {
+    border: none;
+    background: #35605A;
+    color: #dde4ea;
+    border-radius: 3px;
+    padding: 5px;
+    font-family: Arial;
+    font-size: 18px;
+}
+.car_view .info .car_chars  .characteristics .contact .btn-message:hover {
+    background: lightblue;
+    color: #00120B;
+}
 .car_view .info .advanced_info {
     padding-top: 20px;
 }

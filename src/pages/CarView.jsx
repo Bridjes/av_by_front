@@ -7,7 +7,9 @@ import Carousel from 'react-gallery-carousel';
 import 'react-gallery-carousel/dist/index.css';
 
 import classes from "./css/CarView.css"
-import MyButton from "../components/UI/Button/MyButton";
+import ChatServices from "../services/ChatServices";
+import {useFatching} from "../hooks/useFatching";
+import {get_chats_fetch, open_chats, open_the_chat, send_car_message_fetch} from "../store/chatReduser";
 
 const CarView = () => {
 
@@ -18,13 +20,29 @@ const CarView = () => {
     const dispatcher = useDispatch()
     const [isLoading, setIsLoading] = useState(false)
     const car = useSelector(state => state.cars.current_car)
+    const current_user = useSelector(state => state.user.user)
+
+    const [fetchQuestions, isLoadingChat, loadingError] = useFatching(async () => {
+        const txt = `здравствуйте! Заинтересовало ваше авто ${car.brand} ${car.model} ${car.year} г.`
+        // создаём сообщение в бекенде и открываем чат
+        dispatcher(send_car_message_fetch({
+            text: txt,
+            user_id: car.user_create,
+            user_create: current_user
+        }))
+
+        // const rst = await ChatServices.send_message(txt, car.user_create)
+        // // принудительно обновляем чат
+        // dispatcher(get_chats_fetch({setIsLoading: setIsLoading2}))
+        // // открываем чат
+        // dispatcher(open_the_chat({isOnChat: true, chatId: rst.data.chat_id}))
+    })
 
     useEffect(()=> {
         dispatcher(load_car_pk_fetch({pk:id, setIsLoading: setIsLoading}))
     }, [dispatcher,])
 
     const getPhotos = () => {
-        console.log(car.photo_1)
         return [
             {src: car.photo_1},
             {src: car.photo_2},
@@ -40,6 +58,10 @@ const CarView = () => {
         const mileage = `${car.mileage.toLocaleString('ru-RU')} км`
     } catch {
         console.log()
+    }
+
+    const sendCarMessage = () => {
+        fetchQuestions()
     }
 
     return (
@@ -77,7 +99,9 @@ const CarView = () => {
                                 <div className="contact_city">
                                     {car.city}
                                 </div>
-                                <MyButton>Написать продавцу</MyButton>
+                                <button onClick={sendCarMessage}
+                                        className="btn-message"
+                                >Написать продавцу</button>
                             </div>
                         </div>
                     </div>

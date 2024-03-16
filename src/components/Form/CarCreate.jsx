@@ -101,8 +101,8 @@ const CarCreate = () => {
         data.photo_1 = data.photo_1?.[0] ?? null    // null, если файла нет
         data.photo_2 = data.photo_2?.[0] ?? null
         data.photo_3 = data.photo_3?.[0] ?? null
-        data.photo_4 = data.photo_3?.[0] ?? null
-        data.photo_5 = data.photo_4?.[0] ?? null
+        data.photo_4 = data.photo_4?.[0] ?? null
+        data.photo_5 = data.photo_5?.[0] ?? null
         dispatcher(create_car_fetch({data:data, setIsLoading:setIsLoading}))
     };
 
